@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.dark {
+  --background: #0a0a0c;
+  --foreground: #f8f8fc;
+  --primary: #8c71ff;
+  --primary-hover: #7c5fe6;
+  --navbar-background: #111115;
+  --secondary: #1e1b3a;
+  --secondary-foreground: #d4ccff;
+  --accent: #252445;
+  --accent-foreground: #c7b8ff;
+  --card: #121216;
+  --muted: #1a1a24;
+  --muted-foreground: #a1a1b5;
+  --border: #2a2a35;
+  --status-green: #4ade80;
+  --sidebar-background: #0f0f15;
+  --sidebar-foreground: #f8f8fc;
+  --popover: #121216;
+  --popover-foreground: #f8f8fc;
+  --destructive: #ef4444;
+  --destructive-foreground: #f8f8fc;
+  --ring: #8c71ff;
+  --input: #2a2a35;
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: auto;
+  background: var(--background);
+  overflow-y: overlay;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 32rem),
+    radial-gradient(circle at 90% 5%, color-mix(in srgb, var(--secondary-foreground) 10%, transparent), transparent 26rem),
+    var(--background);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+/* Custom Scrollbar - Floating Overlay Design */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--primary-hover));
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::selection {
+  color: var(--background);
+  background: var(--primary);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .outline-title {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--primary);
+  }
+
+  .section-shell {
+    width: min(1180px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .noise-bg {
+    background-image:
+      linear-gradient(color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@keyframes dialog-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-dialog-fade-in {
+  animation: dialog-fade-in 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-dialog-zoom-in {
+  animation: dialog-zoom-in 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes marquee-horizontal {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-horizontal {
+  animation: marquee-horizontal var(--marquee-duration, 16s) linear infinite;
+}
