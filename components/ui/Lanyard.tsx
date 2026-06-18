@@ -44,6 +44,7 @@ export default function Lanyard({
   transparent = true,
 }: LanyardProps) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 1024);
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -53,7 +54,7 @@ export default function Lanyard({
   }, []);
 
   return (
-    <div className="lanyard-wrapper">
+    <div className={`lanyard-wrapper ${isDragging ? "is-dragging" : ""}`}>
       <Canvas
         camera={{ position, fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
@@ -62,7 +63,7 @@ export default function Lanyard({
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
-          <Band isMobile={isMobile} />
+          <Band isMobile={isMobile} onDragStart={() => setIsDragging(true)} onDragEnd={() => setIsDragging(false)} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
@@ -79,9 +80,11 @@ type BandProps = {
   maxSpeed?: number;
   minSpeed?: number;
   isMobile?: boolean;
+  onDragStart?: () => void;
+  onDragEnd?: () => void;
 };
 
-function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
+function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, onDragStart, onDragEnd }: BandProps) {
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
   const j1 = useRef<any>(null);
@@ -264,10 +267,12 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
             onPointerUp={(event: any) => {
               event.target.releasePointerCapture(event.pointerId);
               drag(false);
+              onDragEnd?.();
             }}
             onPointerDown={(event: any) => {
               event.target.setPointerCapture(event.pointerId);
               drag(new THREE.Vector3().copy(event.point).sub(vec.copy(card.current.translation())));
+              onDragStart?.();
             }}
           >
             <mesh geometry={nodes.card.geometry}>
