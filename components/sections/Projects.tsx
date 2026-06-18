@@ -357,7 +357,7 @@ function ProjectModal({ project }: { project: Project | null }) {
         </DialogClose>
       </div>
       {/* Scrollable Body Container */}
-      <div data-lenis-prevent className="flex-1 overflow-y-auto px-4 pt-1 pb-3 md:px-5 md:pt-1.5 md:pb-4 scrollbar-none" style={{ WebkitOverflowScrolling: "touch" }}>
+      <div data-lenis-prevent className="flex-1 overflow-y-auto px-4 pt-1 pb-3 md:px-5 md:pt-1.5 md:pb-4" style={{ WebkitOverflowScrolling: "touch" }}>
         {/* Project Image / Carousel at the top */}
         <ProjectCarousel project={project} />
         {/* Details, Features & Stack */}
