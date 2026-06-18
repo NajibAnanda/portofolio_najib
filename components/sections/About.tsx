@@ -195,7 +195,7 @@ export default function About() {
 
           <motion.div
             variants={textVariants}
-            className="pointer-events-auto relative max-w-3xl select-text space-y-6 lg:pl-14 xl:pl-20"
+            className="pointer-events-auto relative max-w-3xl select-text space-y-6 px-4 lg:px-0 lg:pl-14 xl:pl-20"
           >
             <h2 className="max-w-none whitespace-normal lg:whitespace-nowrap text-[clamp(1.28rem,4.8vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.055em] text-[var(--foreground)]">
               <span className="mr-[0.18em] inline-block align-baseline">Saya membangun</span>
