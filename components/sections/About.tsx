@@ -139,6 +139,7 @@ const TypingDescription = React.memo(function TypingDescription() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="px-4"
         >
           {renderAnimatedTextMobile(
             "Saya Higmatul Najib Ananda Saputra, mahasiswa Teknik Informatika yang berfokus pada pengembangan web, baik dari sisi frontend maupun backend, serta memiliki minat dalam solusi berbasis IoT.",
@@ -150,6 +151,7 @@ const TypingDescription = React.memo(function TypingDescription() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="px-4"
         >
           {renderAnimatedTextMobile(
             "Dalam setiap proyek, saya berusaha membangun antarmuka web yang modern, responsif, dan mudah digunakan, serta sistem backend yang terstruktur dan fungsional. Saya juga tertarik mengembangkan solusi IoT berbasis mikrokontroler dan sensor yang dapat diterapkan untuk mendukung otomasi, monitoring, dan efisiensi dalam berbagai kebutuhan.",
@@ -183,7 +185,7 @@ export default function About() {
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
         onViewportEnter={() => setHasDropped(true)}
-        className="about-lanyard-card relative overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_88%,var(--background))] px-5 py-8 shadow-[0_30px_100px_color-mix(in_srgb,var(--background)_72%,transparent)] md:p-5 lg:p-6"
+        className="about-lanyard-card relative overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_88%,var(--background))] px-6 py-8 shadow-[0_30px_100px_color-mix(in_srgb,var(--background)_72%,transparent)] md:p-5 lg:p-6"
       >
         <div className="about-lanyard-layer pointer-events-auto absolute inset-0 z-30 w-full">
           <Lanyard position={[0, 0, 20]} gravity={hasDropped ? [0, -55, 0] : [0, 0, 0]} fov={16.5} />
