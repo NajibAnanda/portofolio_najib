@@ -74,7 +74,7 @@ const mobileLetterVariants = {
 
 const renderAnimatedTextMobile = (text: string, baseDelay: number, speed: number = 0.008) => {
   let charCount = 0;
-  return text.split(" ").map((word, wordIndex, wordsArr) => {
+  return text.split(" ").map((word, wordIndex) => {
     const chars = word.split("").map((char) => {
       const delay = baseDelay + charCount * speed;
       charCount++;
@@ -89,25 +89,8 @@ const renderAnimatedTextMobile = (text: string, baseDelay: number, speed: number
       );
     });
 
-    const isLastWord = wordIndex === wordsArr.length - 1;
-    if (!isLastWord) {
-      const delay = baseDelay + charCount * speed;
-      charCount++;
-      return (
-        <span key={`w-${wordIndex}`} className="inline-block whitespace-nowrap">
-          {chars}
-          <motion.span
-            custom={delay}
-            variants={mobileLetterVariants}
-          >
-            {" "}
-          </motion.span>
-        </span>
-      );
-    }
-
     return (
-      <span key={`w-${wordIndex}`} className="inline-block whitespace-nowrap">
+      <span key={`w-${wordIndex}`} className="inline-block whitespace-nowrap mr-[0.27em]">
         {chars}
       </span>
     );
