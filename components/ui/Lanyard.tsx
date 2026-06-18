@@ -274,6 +274,11 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, onDragStart, onDr
               drag(new THREE.Vector3().copy(event.point).sub(vec.copy(card.current.translation())));
               onDragStart?.();
             }}
+            onPointerCancel={(event: any) => {
+              event.target.releasePointerCapture(event.pointerId);
+              drag(false);
+              onDragEnd?.();
+            }}
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial color="#f8f8fc" clearcoat={isMobile ? 0 : 1} clearcoatRoughness={0.15} roughness={0.9} metalness={0.8} />
