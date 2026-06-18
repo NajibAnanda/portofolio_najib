@@ -187,7 +187,7 @@ export default function About() {
         onViewportEnter={() => setHasDropped(true)}
         className="about-lanyard-card relative overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_88%,var(--background))] px-6 py-8 shadow-[0_30px_100px_color-mix(in_srgb,var(--background)_72%,transparent)] md:p-5 lg:p-6"
       >
-        <div className="about-lanyard-layer pointer-events-auto absolute inset-0 z-30 w-full">
+        <div className="about-lanyard-layer pointer-events-auto absolute top-0 left-0 z-30 w-full h-[24.5rem] lg:h-full">
           <Lanyard position={[0, 0, 20]} gravity={hasDropped ? [0, -55, 0] : [0, 0, 0]} fov={16.5} />
         </div>
 

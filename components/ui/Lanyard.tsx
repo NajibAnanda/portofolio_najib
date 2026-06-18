@@ -205,6 +205,27 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, onDragStart, onDr
     };
   }, [hovered, dragged]);
 
+  useEffect(() => {
+    const handleRelease = () => {
+      if (dragged) {
+        drag(false);
+        onDragEnd?.();
+      }
+    };
+
+    window.addEventListener("pointerup", handleRelease);
+    window.addEventListener("pointercancel", handleRelease);
+    window.addEventListener("touchend", handleRelease);
+    window.addEventListener("touchcancel", handleRelease);
+
+    return () => {
+      window.removeEventListener("pointerup", handleRelease);
+      window.removeEventListener("pointercancel", handleRelease);
+      window.removeEventListener("touchend", handleRelease);
+      window.removeEventListener("touchcancel", handleRelease);
+    };
+  }, [dragged, onDragEnd]);
+
   useFrame((state, delta) => {
     if (dragged) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
