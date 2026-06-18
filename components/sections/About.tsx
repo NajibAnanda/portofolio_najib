@@ -61,37 +61,119 @@ const letterVariants = {
   },
 };
 
+const mobileLetterVariants = {
+  hidden: { opacity: 0 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      delay: delay,
+    },
+  }),
+};
+
+const renderAnimatedTextMobile = (text: string, baseDelay: number, speed: number = 0.008) => {
+  let charCount = 0;
+  return text.split(" ").map((word, wordIndex, wordsArr) => {
+    const chars = word.split("").map((char) => {
+      const delay = baseDelay + charCount * speed;
+      charCount++;
+      return (
+        <motion.span
+          key={charCount}
+          custom={delay}
+          variants={mobileLetterVariants}
+        >
+          {char}
+        </motion.span>
+      );
+    });
+
+    const isLastWord = wordIndex === wordsArr.length - 1;
+    if (!isLastWord) {
+      const delay = baseDelay + charCount * speed;
+      charCount++;
+      return (
+        <span key={`w-${wordIndex}`} className="inline-block whitespace-nowrap">
+          {chars}
+          <motion.span
+            custom={delay}
+            variants={mobileLetterVariants}
+          >
+            {" "}
+          </motion.span>
+        </span>
+      );
+    }
+
+    return (
+      <span key={`w-${wordIndex}`} className="inline-block whitespace-nowrap">
+        {chars}
+      </span>
+    );
+  });
+};
+
 const TypingDescription = React.memo(function TypingDescription() {
   return (
-    <div className="space-y-4 text-base leading-7 text-[var(--muted-foreground)] md:text-lg md:leading-8">
-      <motion.p
-        variants={paragraph1Variants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {"Saya Higmatul Najib Ananda Saputra, mahasiswa Teknik Informatika yang berfokus pada pengembangan web, baik dari sisi frontend maupun backend, serta memiliki minat dalam solusi berbasis IoT."
-          .split("")
-          .map((char, i) => (
-            <motion.span key={i} variants={letterVariants}>
-              {char}
-            </motion.span>
-          ))}
-      </motion.p>
-      <motion.p
-        variants={paragraph2Variants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {"Dalam setiap proyek, saya berusaha membangun antarmuka web yang modern, responsif, dan mudah digunakan, serta sistem backend yang terstruktur dan fungsional. Saya juga tertarik mengembangkan solusi IoT berbasis mikrokontroler dan sensor yang dapat diterapkan untuk mendukung otomasi, monitoring, dan efisiensi dalam berbagai kebutuhan."
-          .split("")
-          .map((char, i) => (
-            <motion.span key={i} variants={letterVariants}>
-              {char}
-            </motion.span>
-          ))}
-      </motion.p>
+    <div className="text-base leading-7 text-[var(--muted-foreground)] md:text-lg md:leading-8">
+      {/* Desktop version (Unchanged) */}
+      <div className="hidden lg:block space-y-4">
+        <motion.p
+          variants={paragraph1Variants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {"Saya Higmatul Najib Ananda Saputra, mahasiswa Teknik Informatika yang berfokus pada pengembangan web, baik dari sisi frontend maupun backend, serta memiliki minat dalam solusi berbasis IoT."
+            .split("")
+            .map((char, i) => (
+              <motion.span key={i} variants={letterVariants}>
+                {char}
+              </motion.span>
+            ))}
+        </motion.p>
+        <motion.p
+          variants={paragraph2Variants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {"Dalam setiap proyek, saya berusaha membangun antarmuka web yang modern, responsif, dan mudah digunakan, serta sistem backend yang terstruktur dan fungsional. Saya juga tertarik mengembangkan solusi IoT berbasis mikrokontroler dan sensor yang dapat diterapkan untuk mendukung otomasi, monitoring, dan efisiensi dalam berbagai kebutuhan."
+            .split("")
+            .map((char, i) => (
+              <motion.span key={i} variants={letterVariants}>
+                {char}
+              </motion.span>
+            ))}
+        </motion.p>
+      </div>
+
+      {/* Mobile/Tablet version (Fixed word-wrapping) */}
+      <div className="block lg:hidden space-y-4">
+        <motion.p
+          variants={paragraph1Variants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {renderAnimatedTextMobile(
+            "Saya Higmatul Najib Ananda Saputra, mahasiswa Teknik Informatika yang berfokus pada pengembangan web, baik dari sisi frontend maupun backend, serta memiliki minat dalam solusi berbasis IoT.",
+            0.3
+          )}
+        </motion.p>
+        <motion.p
+          variants={paragraph2Variants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {renderAnimatedTextMobile(
+            "Dalam setiap proyek, saya berusaha membangun antarmuka web yang modern, responsif, dan mudah digunakan, serta sistem backend yang terstruktur dan fungsional. Saya juga tertarik mengembangkan solusi IoT berbasis mikrokontroler dan sensor yang dapat diterapkan untuk mendukung otomasi, monitoring, dan efisiensi dalam berbagai kebutuhan.",
+            1.82
+          )}
+        </motion.p>
+      </div>
     </div>
   );
 });

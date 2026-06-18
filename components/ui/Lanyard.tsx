@@ -96,7 +96,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
 
   const segmentProps: any = {
     type: "dynamic" as RigidBodyProps["type"],
-    canSleep: true,
+    canSleep: false,
     colliders: false,
     angularDamping: 4,
     linearDamping: 4,
