@@ -305,27 +305,18 @@ function ProjectCarousel({ project }: { project: Project }) {
       {images.length > 1 && (
         <div className="mt-3 flex justify-center items-center h-3">
           {images.map((_, index) => {
-            const isActive = activeIndex === index;
             const distance = Math.abs(index - activeIndex);
             
             let dotClass = "";
             
-            if (images.length <= 5) {
-              // Standard behavior for 5 or fewer images
-              dotClass = isActive
-                ? "w-2 h-2 mx-0.5 bg-[var(--primary)] opacity-100"
-                : "w-1.5 h-1.5 mx-0.5 bg-[var(--muted-foreground)] opacity-40 hover:opacity-70";
+            if (distance === 0) {
+              dotClass = "w-2 h-2 mx-0.5 bg-[var(--primary)] opacity-100";
+            } else if (distance === 1) {
+              dotClass = "w-1.5 h-1.5 mx-0.5 bg-[var(--muted-foreground)] opacity-40 hover:opacity-70";
+            } else if (distance === 2) {
+              dotClass = "w-1 h-1 mx-0.5 bg-[var(--muted-foreground)] opacity-20";
             } else {
-              // Shrinking/shifting behavior for more than 5 images
-              if (distance === 0) {
-                dotClass = "w-2 h-2 mx-0.5 bg-[var(--primary)] opacity-100";
-              } else if (distance === 1) {
-                dotClass = "w-1.5 h-1.5 mx-0.5 bg-[var(--muted-foreground)] opacity-40 hover:opacity-70";
-              } else if (distance === 2) {
-                dotClass = "w-1 h-1 mx-0.5 bg-[var(--muted-foreground)] opacity-20";
-              } else {
-                dotClass = "w-0 h-0 mx-0 opacity-0 pointer-events-none overflow-hidden";
-              }
+              dotClass = "w-0 h-0 mx-0 opacity-0 pointer-events-none overflow-hidden";
             }
             return (
               <button
