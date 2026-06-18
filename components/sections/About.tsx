@@ -139,7 +139,7 @@ const TypingDescription = React.memo(function TypingDescription() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="px-4"
+          className="pr-4"
         >
           {renderAnimatedTextMobile(
             "Saya Higmatul Najib Ananda Saputra, mahasiswa Teknik Informatika yang berfokus pada pengembangan web, baik dari sisi frontend maupun backend, serta memiliki minat dalam solusi berbasis IoT.",
@@ -151,7 +151,7 @@ const TypingDescription = React.memo(function TypingDescription() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="px-4"
+          className="pr-4"
         >
           {renderAnimatedTextMobile(
             "Dalam setiap proyek, saya berusaha membangun antarmuka web yang modern, responsif, dan mudah digunakan, serta sistem backend yang terstruktur dan fungsional. Saya juga tertarik mengembangkan solusi IoT berbasis mikrokontroler dan sensor yang dapat diterapkan untuk mendukung otomasi, monitoring, dan efisiensi dalam berbagai kebutuhan.",
