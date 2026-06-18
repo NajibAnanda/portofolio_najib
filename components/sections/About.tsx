@@ -183,7 +183,7 @@ export default function About() {
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
         onViewportEnter={() => setHasDropped(true)}
-        className="about-lanyard-card relative overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_88%,var(--background))] p-4 shadow-[0_30px_100px_color-mix(in_srgb,var(--background)_72%,transparent)] md:p-5 lg:p-6"
+        className="about-lanyard-card relative overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[color-mix(in_srgb,var(--card)_88%,var(--background))] px-6 py-8 shadow-[0_30px_100px_color-mix(in_srgb,var(--background)_72%,transparent)] md:p-5 lg:p-6"
       >
         <div className="about-lanyard-layer pointer-events-auto absolute inset-0 z-30 w-full">
           <Lanyard position={[0, 0, 20]} gravity={hasDropped ? [0, -55, 0] : [0, 0, 0]} fov={16.5} />
@@ -197,7 +197,7 @@ export default function About() {
             variants={textVariants}
             className="pointer-events-auto relative max-w-3xl select-text space-y-6 lg:pl-14 xl:pl-20"
           >
-            <h2 className="max-w-none whitespace-nowrap text-[clamp(1.28rem,4.8vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.055em] text-[var(--foreground)]">
+            <h2 className="max-w-none whitespace-normal lg:whitespace-nowrap text-[clamp(1.28rem,4.8vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.055em] text-[var(--foreground)]">
               <span className="mr-[0.18em] inline-block align-baseline">Saya membangun</span>
               <span className="relative inline-grid w-[14ch] overflow-hidden align-baseline text-[var(--primary)]">
                 <AnimatePresence initial={false}>
