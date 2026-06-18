@@ -203,7 +203,7 @@ function CarouselImage({
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
   return (
-    <div className="relative w-full shrink-0 snap-start overflow-hidden bg-[var(--muted)] flex items-center justify-center" style={{ minHeight: "10rem" }}>
+    <div className="relative w-full shrink-0 snap-start overflow-hidden bg-[var(--muted)] flex items-center justify-center min-h-[7rem] sm:min-h-[10rem]">
       {!error ? (
         <img
           src={image}
