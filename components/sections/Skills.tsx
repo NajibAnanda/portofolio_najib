@@ -8,7 +8,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 const skills = [
   { name: "JavaScript", slug: "javascript", color: "f7df1e" },
   { name: "React", slug: "react", color: "61dafb" },
-  { name: "Next.js", slug: "nextdotjs", color: "ffffff" },
+  { name: "Next.js", slug: "nextdotjs", color: "000000" },
   { name: "Tailwind CSS", slug: "tailwindcss", color: "38bdf8" },
   { name: "CSS", slug: "css", color: "663399" },
   { name: "PHP", logoSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" },
