@@ -185,26 +185,16 @@ export default function Navbar() {
           </span>
         </button>
 
-        <div className="flex items-center gap-1">
-          <button
-            onClick={() => handleLinkClick("#contact")}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[var(--primary)] py-1.5 px-3.5 text-xs font-semibold text-[var(--background)] transition-all duration-300 hover:bg-[var(--primary-hover)]"
-          >
-            <span>Hire me</span>
-            <BriefcaseBusiness aria-hidden="true" size={13} strokeWidth={2.3} />
-          </button>
-
-          <button
-            onClick={() => setOpen((value) => !value)}
-            className={`inline-flex h-10 w-10 items-center justify-center transition-colors hover:text-[var(--primary)] ${
-              open ? "text-[var(--primary)]" : "text-[var(--foreground)]"
-            }`}
-            aria-label="Toggle menu"
-            aria-expanded={open}
-          >
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+        <button
+          onClick={() => setOpen((value) => !value)}
+          className={`inline-flex h-10 w-10 items-center justify-center transition-colors hover:text-[var(--primary)] ${
+            open ? "text-[var(--primary)]" : "text-[var(--foreground)]"
+          }`}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+        >
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </nav>
 
       <AnimatePresence>
@@ -233,6 +223,25 @@ export default function Navbar() {
                 {link.label}
               </motion.button>
             ))}
+
+            {/* Separator and Hire me Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: links.length * 0.05 }}
+              className="mt-2.5 pt-2.5 border-t border-[var(--border)]"
+            >
+              <button
+                onClick={() => {
+                  handleLinkClick("#contact");
+                  setOpen(false);
+                }}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[var(--primary)] py-3 text-sm font-semibold text-[var(--background)] transition-all duration-300 hover:bg-[var(--primary-hover)]"
+              >
+                <span>Hire me</span>
+                <BriefcaseBusiness aria-hidden="true" size={16} strokeWidth={2.3} />
+              </button>
+            </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>
