@@ -185,16 +185,26 @@ export default function Navbar() {
           </span>
         </button>
 
-        <button
-          onClick={() => setOpen((value) => !value)}
-          className={`inline-flex h-10 w-10 items-center justify-center transition-colors hover:text-[var(--primary)] ${
-            open ? "text-[var(--primary)]" : "text-[var(--foreground)]"
-          }`}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => handleLinkClick("#contact")}
+            className="inline-flex items-center gap-1.5 rounded-full bg-[var(--primary)] py-1.5 px-3.5 text-xs font-semibold text-[var(--background)] transition-all duration-300 hover:bg-[var(--primary-hover)]"
+          >
+            <span>Hire me</span>
+            <BriefcaseBusiness aria-hidden="true" size={13} strokeWidth={2.3} />
+          </button>
+
+          <button
+            onClick={() => setOpen((value) => !value)}
+            className={`inline-flex h-10 w-10 items-center justify-center transition-colors hover:text-[var(--primary)] ${
+              open ? "text-[var(--primary)]" : "text-[var(--foreground)]"
+            }`}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
