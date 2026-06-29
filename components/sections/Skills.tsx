@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const skills = [
-  { name: "HTML", slug: "html5", color: "e34f26" },
-  { name: "CSS", slug: "css", color: "663399" },
   { name: "JavaScript", slug: "javascript", color: "f7df1e" },
   { name: "React", slug: "react", color: "61dafb" },
+  { name: "Next.js", slug: "nextdotjs", color: "ffffff" },
   { name: "Tailwind CSS", slug: "tailwindcss", color: "38bdf8" },
+  { name: "CSS", slug: "css", color: "663399" },
   { name: "PHP", logoSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" },
   { name: "Laravel", slug: "laravel", color: "ff2d20" },
   { name: "Python", logoSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
